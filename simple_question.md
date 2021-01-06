@@ -18,18 +18,20 @@
 
 A：
 
-  int reverse(int x){
-  int i = 1,cent,y,sum = 0,p,j = 0;
-  int A[10]={2,1,4,7,4,8,3,6,4,7};
-  int B[10]={-2,-1,-4,-7,-4,-8,-3,-6,-4,-8};
-    cent = x;
+    int reverse(int x){
+    int i = 1,cent,y,sum = 0,p,j = 0;
+    int A[10]={2,1,4,7,4,8,3,6,4,7};
+    int B[10]={-2,-1,-4,-7,-4,-8,-3,-6,-4,-8};
+      cent = x;
   //位数计算   
-  while(cent!=0&&(cent>=10||cent<=-10)){
+    
+    while(cent!=0&&(cent>=10||cent<=-10)){
             cent=cent/10;
             i=i*10;
                              }
   //合法性判断
-  cent = x;
+          
+    cent = x;
          if(i==1000000000){
               int tag=1;
               while(cent!=0){
@@ -45,14 +47,15 @@ A：
          }
          
      }    
- cent = x;
+    cent = x;
  //逆转部分
- while(cent!=0){
+ 
+    while(cent!=0){
         y=cent%10;
         cent=cent/10;
         p=y*i;
         sum=sum+p;
         i=i/10;
         }
-  return sum;
-}
+    return sum;
+     }
