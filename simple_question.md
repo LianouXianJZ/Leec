@@ -154,6 +154,7 @@ A：
 A：
 
     bool isValid(char * s){
+    //可用strlen计算s长度
     char A[4000];
     A[0]='1';
     int i=0,j=0;
