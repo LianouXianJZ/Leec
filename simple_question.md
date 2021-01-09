@@ -189,3 +189,60 @@ A：
     return false;
     }
     }
+
+5.升序链表链接
+
+     struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2){
+    struct ListNode *p = (struct ListNode *)malloc(sizeof(struct ListNode));
+    struct ListNode *q=p;
+    if(l1==NULL&&l2==NULL){
+        return 0;
+    }
+    while(1){
+        //都不为空
+        if(l1!=NULL&&l2!=NULL){
+            if(l1->val>l2->val){
+            struct ListNode *r = (struct ListNode *)malloc(sizeof(struct ListNode));
+            r->val=l2->val;
+            r->next=NULL;
+            q->next=r;
+            q=q->next;
+            l2=l2->next;
+            }
+            else if(l1->val<l2->val){
+            struct ListNode *r = (struct ListNode *)malloc(sizeof(struct ListNode));
+            r->val=l1->val;
+            r->next=NULL;
+            q->next=r;
+            q=q->next;
+            l1=l1->next;   
+            }
+            else if(l1->val==l2->val){
+                for(int i=0;i<2;i++){
+            struct ListNode *r = (struct ListNode *)malloc(sizeof(struct ListNode));
+            r->val=l1->val;
+            r->next=NULL;
+            q->next=r;
+            q=q->next;
+                }
+                l1=l1->next;
+                l2=l2->next;
+            }
+        }
+        //其中一个先为空
+        else if(l1==NULL&&l2==NULL){
+            return p->next;
+        }
+        //另一个为空
+       else if(l1==NULL&&l2!=NULL){
+           q->next=l2;
+           return p->next;
+       }
+       else if(l2==NULL&&l1!=NULL){
+           q->next=l1;
+           return p->next;
+       }
+    }
+    }
+
+
