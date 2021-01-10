@@ -296,3 +296,60 @@ A：
         return numsSize-k;
     }
     }
+7.两数相加
+
+给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+
+请你将两个数相加，并以相同形式返回一个表示和的链表。
+
+你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+
+
+A：
+
+  
+  
+        struct ListNode* cre_N(struct ListNode *p){
+    p=(struct ListNode *)malloc(sizeof(struct ListNode));
+    p->next=NULL;
+    return p;
+    }
+    struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2){
+    struct ListNode *p,*r,*q;
+    p=cre_N(p);
+    r=p;
+    int a,b,tag=0;
+    while(l1!=NULL||l2!=NULL){
+        if(l1!=NULL){
+            a=l1->val;
+            l1=l1->next;
+        }
+        else{
+            a=0;
+        }
+        if(l2!=NULL){
+            b=l2->val;
+            l2=l2->next;
+        }
+        else{
+            b=0;
+        }
+        q=cre_N(q);
+        q->val=(a+b+tag)%10;
+        r->next=q;
+        r=r->next;
+        if((a+b+tag)%10!=(a+b+tag)){
+        tag=1;
+        }
+        else{
+            tag=0;
+        }   
+    }
+    if(tag==1){
+           q=cre_N(q);
+           q->val=1;
+           r->next=q;
+        }
+    return p->next;
+    }
+
