@@ -415,7 +415,7 @@ A:  给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nu
    
    
    
-    //屎一样的代码
+    //屎一样的代码，但是快 - -，存储空间可以更小，但是实在不想写if else了。。。
     double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
     //两序列和为奇数
     int pre1=0,pre2=0,tag=0,temp;
