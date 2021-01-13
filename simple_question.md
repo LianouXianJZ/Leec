@@ -384,3 +384,81 @@ A：
     }
     return B_Max;
     }
+    
+9.示例 1：
+
+输入：nums1 = [1,3], nums2 = [2]
+输出：2.00000
+解释：合并数组 = [1,2,3] ，中位数 2
+示例 2：
+
+输入：nums1 = [1,2], nums2 = [3,4]
+输出：2.50000
+解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+示例 3：
+
+输入：nums1 = [0,0], nums2 = [0,0]
+输出：0.00000
+示例 4：
+
+输入：nums1 = [], nums2 = [1]
+输出：1.00000
+示例 5：
+
+输入：nums1 = [2], nums2 = []
+输出：2.00000
+
+
+
+
+A:  给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数。
+   
+   
+   
+    //屎一样的代码
+    double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size){
+    //两序列和为奇数
+    int pre1=0,pre2=0,tag=0,temp;
+    int A[(nums1Size+nums2Size)/2+1];
+    int f=(nums1Size+nums2Size)/2+1;
+    //return 0;
+    while(tag<=(nums1Size+nums2Size)/2){
+        if(pre1<=nums1Size-1&&pre2<=nums2Size-1){
+            if(nums1[pre1]>nums2[pre2]){
+                A[tag] = nums2[pre2];
+                pre2++;
+                tag++;
+            }
+            else if(nums1[pre1]<nums2[pre2]){
+                A[tag] = nums1[pre1];
+                pre1++;
+                tag++;
+            }
+            else if(nums1[pre1]==nums2[pre2]){
+                A[tag] = nums1[pre1];
+                if(tag+1<f)
+                A[tag+1]=nums1[pre1];
+                pre1++;
+                pre2++;
+                tag+=2;
+                
+            }
+        }
+        else if(pre1>nums1Size-1){
+            A[tag] = nums2[pre2];
+            pre2++;
+            tag++;    
+        }
+        else if(pre2>nums2Size-1){
+            A[tag] = nums1[pre1];
+            pre1++;
+            tag++;
+        }
+    }
+    int c=(nums1Size+nums2Size)/2;
+    if((nums1Size+nums2Size)%2!=0)
+       return A[c];
+    else
+    return (A[c-1]+A[c])/2.0;
+    }
+
