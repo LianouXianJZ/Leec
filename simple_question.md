@@ -462,3 +462,40 @@ A:  给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nu
     return (A[c-1]+A[c])/2.0;
     }
 
+10. 字符串单词反转
+给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。
+
+ 
+
+示例：
+
+输入："Let's take LeetCode contest"
+输出："s'teL ekat edoCteeL tsetnoc"
+
+
+A:
+
+    char * reverseWords(char * s){
+    int i =1,L=0,R=0,temp=0;
+    while(s[i-1]){
+        if(s[i]==' '||s[i]=='\0'){
+            R = i-1;
+            while(L<R){
+                temp = s[L];
+                s[L] = s[R];
+                s[R] = temp;
+                L++;
+                R--;  
+            }
+            L=i+1;
+            i++; 
+        }
+        else{
+            i++;
+        }
+    }
+    
+    return s;
+    }
+
+
